@@ -9,9 +9,17 @@
 </head>
 <body>
     <header th:insert="navbar :: navbar"></header>
-    <div class="ml-5">
+    <div class="ml-5 my-2">
         <span>Adresse entrée par l'utilisateur : </span>
         <span th:text="${address}" class="text-success" />
+    </div>
+    <div class="ml-5 my-2">
+        <span>Latitude : </span>
+        <span th:text="${latitude}" class="text-success" />
+    </div>
+    <div class="ml-5 my-2">
+        <span>Longitude : </span>
+        <span th:text="${longitude}" class="text-success" />
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

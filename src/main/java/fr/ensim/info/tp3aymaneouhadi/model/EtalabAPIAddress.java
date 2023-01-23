@@ -8,7 +8,6 @@ import java.util.Map;
 public class EtalabAPIAddress {
     public String type;
     public String version;
-
     public List<Map<String, Object>> features = new ArrayList<>();
     public String attribution;
     public String licence;
