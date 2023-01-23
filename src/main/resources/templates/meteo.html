@@ -1,23 +1,18 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Adresses</title>
-    <meta http-equiv="Content-Type" content="text/html ; charset=UTF-8" />
+    <meta charset="UTF-8">
+    <title>Meteo</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.5/datatables.min.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 </head>
 <body>
-
     <header th:insert="navbar :: navbar"></header>
-    <h2 class="ml-3 my-3">Les adresses disponibles : </h2>
-    <ul th:each="address:${allAddresses}">
-        <li>
-            <span th:text="${address.content}" th:class="text-success"/>
-            <span>créé par </span>
-            <span th:text="${address.auteur}" th:class="text-success"/>
-        </li>
-    </ul>
+    <div class="ml-5">
+        <span>Adresse entrée par l'utilisateur : </span>
+        <span th:text="${address}" class="text-success" />
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.5/datatables.min.js"></script>

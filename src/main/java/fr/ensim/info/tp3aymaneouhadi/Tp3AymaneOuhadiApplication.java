@@ -21,21 +21,21 @@ public class Tp3AymaneOuhadiApplication implements ApplicationRunner {
 
     }
 
-    //Fonction qui se lance au demarrage de l'application qui nous permettra d'ajouter des lignes à la table
+    //Fonction qui se lance au demarrage de l'application qui nous permettra d'ajouter des lignes à la table automatiquement
     @Override
     public void run(ApplicationArguments arg0) throws Exception {
         Address address1 = new Address(
                 1L,
                 new Date(),
                 "57 boulevard demorieux",
-                "Amine"
+                "Aymane"
         );
 
         Address address2 = new Address(
                 2L,
                 new Date(),
                 "51 allee du gamay, 34080 montpellier",
-                "Meriem"
+                "Ahmed"
         );
 
         addressRepository.save(address1);
