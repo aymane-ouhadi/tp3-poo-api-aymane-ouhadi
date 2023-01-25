@@ -8,7 +8,7 @@ import java.util.Map;
 public class EtalabAPIAddress {
     public String type;
     public String version;
-    public List<Map<String, Object>> features = new ArrayList<>();
+    public List<Feature> features = new ArrayList<>();
     public String attribution;
     public String licence;
     public String query;
@@ -18,8 +18,9 @@ public class EtalabAPIAddress {
     @Override
     public String toString() {
         return "EtalabAPIAddress{" +
-                "features=" + features +
+                "feature{s=" + features +
                 ", query='" + query + '\'' +
                 '}';
     }
+
 }

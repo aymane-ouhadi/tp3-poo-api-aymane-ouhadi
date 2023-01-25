@@ -1,4 +1,4 @@
-# TP 3 - Aymane OUHADI
+# TP 3 - Aymane OUHADI (partie 1)
 
 ## Spring Web
 C'est un framework de développement web basé sur Spring qui facilite la création d'applications web en utilisant des technologies comme JavaServer Faces, Spring MVC, etc.
@@ -36,3 +36,12 @@ L'annotation @Autowired de Spring permet d'automatiser l'injection de dépendanc
 
 ### Etape 30
 J'ai obtenu les liens CDN vers des feuilles de styles distantes ainsi que d'autres scripts depuis la page officielle de Bootstrap et je les ai inclu dans les pages où je veux appliquer Bootstrap
+
+# TP 3 - Aymane OUHADI (partie 2)
+
+### Questions Etape 6
+* La clé API est importante pour appeler MeteoConcept API et la raison principale pour laquelle les API nécessitent une clé API est pour des raisons de sécurité et la protection de l'API (c'est pour ça l'authenfication est aussi requise)
+* l'URL à appeler : https://api.meteo-concept.com/api/forecast/daily/0?token=CLE_API&latlng=LATITUDE,LONGITUDE
+* Puisqu'on va juste récupérer des informations depuis l'API et on va rien en ajouter on doit utiliser la méthode GET
+* Pour passer les paramètres ils doivent être précédés par un "?" et un "&" entre chacun des paramètres (comme dans la réponse à la question 2)
+* L'ensemble des informations de la météo se trouve dans la partie "forecast" dans le corps JSON de la réponse

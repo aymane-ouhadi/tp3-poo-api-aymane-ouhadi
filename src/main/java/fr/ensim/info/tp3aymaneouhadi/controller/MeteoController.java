@@ -2,6 +2,8 @@ package fr.ensim.info.tp3aymaneouhadi.controller;
 
 
 import fr.ensim.info.tp3aymaneouhadi.model.EtalabAPIAddress;
+import fr.ensim.info.tp3aymaneouhadi.model.Feature;
+import fr.ensim.info.tp3aymaneouhadi.model.MeteoConceptResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
@@ -35,7 +37,6 @@ public class MeteoController {
         Model model
     ){
 
-        String meteo_url = "https://api.meteo-concept.com/api/forecast/daily/0?token=";
 
         //élimination des espaces et les remplacer par des +
         String query = address.toLowerCase().replace(" ", "+");
@@ -43,24 +44,41 @@ public class MeteoController {
         //Géo API
         EtalabAPIAddress etalabAPIAddress = rt.getForObject("https://api-adresse.data.gouv.fr/search/?q=" + query + "&limit=1", EtalabAPIAddress.class);
 
-        //Méteo API
 
+        Feature feature = etalabAPIAddress.features.get(0);
+
+
+        float longitude = feature.getGeometry().getCoordinates().get(0);
+
+        float latitude = feature.getGeometry().getCoordinates().get(1);
+
+
+
+        //Méteo API
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
 
         HttpEntity<String> requestEntity = new HttpEntity<>(headers);
-        rt.exchange(meteo_url + API_KEY, HttpMethod.GET, requestEntity, String.class);
 
-        Map<String, int[]> x = (HashMap<String, int[]>) etalabAPIAddress.features.get(0).get("geometry");
 
-//        String longitude = x.get("coordinates")[0];
-//        String latitude = x.get("coordinates")[1];
+        String meteo_url = "https://api.meteo-concept.com/api/forecast/daily/0?token=" + API_KEY + "&latlng=" + latitude + "," + longitude;
 
+        ResponseEntity<MeteoConceptResponse> response = rt.exchange(meteo_url, HttpMethod.GET, requestEntity, MeteoConceptResponse.class);
+
+        //Passage Model-View
         model.addAttribute("address", address);
         model.addAttribute("info", etalabAPIAddress);
 
-        model.addAttribute("latitude", x.get("coordinates")[0]);
-        model.addAttribute("longitude", x.get("coordinates"));
+        model.addAttribute("longitude", longitude);
+        model.addAttribute("latitude", latitude);
+
+        //Passage Model-View
+        model.addAttribute("body", response.getBody().getForecast());
+        model.addAttribute("wind", response.getBody().getForecast().get("wind10m") + " %");
+        model.addAttribute("rain", response.getBody().getForecast().get("probarain") + " %");
+        model.addAttribute("tmin", response.getBody().getForecast().get("tmin") + " °C");
+        model.addAttribute("tmax", response.getBody().getForecast().get("tmax") + " °C");
+        model.addAttribute("sun_hours", response.getBody().getForecast().get("sun_hours") + " heures");
 
         return "meteo";
     }
