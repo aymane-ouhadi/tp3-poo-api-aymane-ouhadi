@@ -45,3 +45,6 @@ J'ai obtenu les liens CDN vers des feuilles de styles distantes ainsi que d'autr
 * Puisqu'on va juste récupérer des informations depuis l'API et on va rien en ajouter on doit utiliser la méthode GET
 * Pour passer les paramètres ils doivent être précédés par un "?" et un "&" entre chacun des paramètres (comme dans la réponse à la question 2)
 * L'ensemble des informations de la météo se trouve dans la partie "forecast" dans le corps JSON de la réponse
+
+# Repository GITHUB
+https://github.com/aymane-ouhadi/tp3-poo-api-aymane-ouhadi.git
